@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Takohama Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f5f6f8;
+    }
+
+    /* Navbar */
+    .navbar {
+      transition: top 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url("hero.jpg") center/cover no-repeat; /* GANTI FOTO */
+      position: relative;
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 51, 102, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Section spacing */
+    section {
+      padding: 80px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #e0e0e0;
+      padding: 30px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Takohama</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+        <li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center justify-content-center text-center">
+  <div class="hero-content">
+    <h1 id="typing-text" class="display-4 fw-bold"></h1>
+  </div>
+</section>
+
+<!-- About Me -->
+<section id="about">
+  <div class="container">
+    <h2 class="text-primary mb-4">About Me</h2>
+    <p class="text-secondary">
+      Halo! Saya Takohama, seorang web developer yang tertarik pada desain modern
+      dan pengembangan website yang simpel namun fungsional.
+    </p>
+  </div>
+</section>
+
+<!-- Project -->
+<section id="project" class="bg-light">
+  <div class="container">
+    <h2 class="text-primary mb-4">Project</h2>
+    <p class="text-secondary">
+      Beberapa project yang pernah saya kerjakan akan ditampilkan di sini.
+    </p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-primary mb-4">Contact</h2>
+    <p class="text-secondary">
+      Email: kaiji0889@email.com <br>
+      Instagram: @takohama
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <p class="mb-0 text-secondary">
+    © 2025 Takohama. All rights reserved.
+  </p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Typing Animation -->
+<script>
+  const text = "Hello, World!";
+  let index = 0;
+  const speed = 120;
+  const typingElement = document.getElementById("typing-text");
+
+  function typeText() {
+    if (index < text.length) {
+      typingElement.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeText, speed);
+    }
+  }
+
+  window.addEventListener("load", typeText);
+
+  /* Hide navbar when footer appears */
+  const navbar = document.getElementById("navbar");
+  const footer = document.getElementById("footer");
+
+  window.addEventListener("scroll", () => {
+    const footerTop = footer.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (footerTop < windowHeight) {
+      navbar.style.top = "-80px";
+    } else {
+      navbar.style.top = "0";
+    }
+  });
+</script>
+
+</body>
+</html>
